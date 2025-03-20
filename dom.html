@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Interativa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        #mensagens, #listas {
+            text-align: left;
+            margin-top: 10px;
+        }
+        #erro {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Página Interativa</h1>
+        
+        <h2>Contador de Cliques</h2>
+        <button id="increment">Incrementar</button>
+        <button id="decrement">Decrementar</button>
+        <span id="contador">0</span>
+        <p id="erro"></p>
+
+        <h2>Adicionar Texto Dinâmico</h2>
+        <input type="text" id="texto" placeholder="Digite algo...">
+        <p id="contadorCaracteres">Caracteres: 0</p>
+        <div id="mensagens"></div>
+
+        <h2>Adicionar Novo Item</h2>
+        <select id="tipoLista">
+            <option value="ol">Lista Ordenada</option>
+            <option value="ul">Lista Não Ordenada</option>
+        </select>
+        <input type="text" id="novoItem" placeholder="Digite o item...">
+        <button id="adicionarItem">Adicionar Item</button>
+        <div id="listas"></div>
+
+        <h2>Resetar Tudo</h2>
+        <button id="reset">Reset</button>
+    </div>
+
+    <script>
+        let contador = 0;
+        document.getElementById("increment").addEventListener("click", () => {
+            contador++;
+            document.getElementById("contador").textContent = contador;
+            document.getElementById("erro").textContent = "";
+        });
+
+        document.getElementById("decrement").addEventListener("click", () => {
+            if (contador > 0) {
+                contador--;
+                document.getElementById("contador").textContent = contador;
+            } else {
+                document.getElementById("erro").textContent = "Erro: O contador já está em zero!";
+            }
+        });
+
+        document.getElementById("texto").addEventListener("input", (e) => {
+            let textoSemEspacos = e.target.value.replace(/\s/g, "");
+            document.getElementById("contadorCaracteres").textContent = "Caracteres: " + textoSemEspacos.length;
+        });
+
+        document.getElementById("texto").addEventListener("keypress", (e) => {
+            if (e.key === "Enter" && e.target.value.trim() !== "") {
+                let p = document.createElement("p");
+                p.textContent = e.target.value;
+                document.getElementById("mensagens").appendChild(p);
+                e.target.value = "";
+                document.getElementById("contadorCaracteres").textContent = "Caracteres: 0";
+            }
+        });
+
+        document.getElementById("adicionarItem").addEventListener("click", () => {
+            let tipoLista = document.getElementById("tipoLista").value;
+            let novoItemTexto = document.getElementById("novoItem").value.trim();
+            if (novoItemTexto === "") {
+                alert("Digite um item válido.");
+                return;
+            }
+            let lista = document.getElementById("listas").querySelector(tipoLista) || document.createElement(tipoLista);
+            let item = document.createElement("li");
+            item.textContent = novoItemTexto;
+            lista.appendChild(item);
+            document.getElementById("listas").appendChild(lista);
+            document.getElementById("novoItem").value = "";
+        });
+
+        document.getElementById("reset").addEventListener("click", () => {
+            contador = 0;
+            document.getElementById("contador").textContent = contador;
+            document.getElementById("erro").textContent = "";
+            document.getElementById("mensagens").innerHTML = "";
+            document.getElementById("listas").innerHTML = "";
+            document.getElementById("texto").value = "";
+            document.getElementById("contadorCaracteres").textContent = "Caracteres: 0";
+        });
+    </script>
+</body>
+</html>
