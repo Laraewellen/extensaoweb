@@ -39,9 +39,11 @@ function marcarItem() {
 function desmarcarItem() {
     let select = document.getElementById("itemSelect");
     let tabela = document.getElementById("tabelaItens");
+    let encontrado = false;
     
     for (let row of tabela.rows) {
         if (row.cells[0].textContent === select.value) {
+            encontrado = true;
             if (!row.classList.contains("marcado")) {
                 alert("O item já está desmarcado!");
                 return;
@@ -49,17 +51,25 @@ function desmarcarItem() {
             row.classList.remove("marcado");
         }
     }
+    if (!encontrado) {
+        alert("O item selecionado não foi encontrado na tabela!");
+    }
 }
 
 function removerItem() {
     let select = document.getElementById("itemSelect");
     let tabela = document.getElementById("tabelaItens");
+    let encontrado = false;
     
     for (let row of tabela.rows) {
         if (row.cells[0].textContent === select.value) {
             tabela.removeChild(row);
             select.remove(select.selectedIndex);
-            return;
+            encontrado = true;
+            break;
         }
+    }
+    if (!encontrado) {
+        alert("O item selecionado não foi encontrado na tabela!");
     }
 }
