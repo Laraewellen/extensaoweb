@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descubra Seu Personagem</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="inicio">
+      <h1>Bem-vindo ao Reino de Eldoria!</h1>
+      <p>No mundo mágico de Eldoria, você pode ser um bravo guerreiro, uma elfa mística ou uma poderosa maga estelar. Descubra agora qual destino te espera!</p>
+
+      <!-- Seção com as imagens dos personagens -->
+      <div class="personagens">
+        <div class="personagem">
+          <img src="imagens/thorn.png" alt="Guerreiro">
+          <p>Guerreiro</p>
+        </div>
+        <div class="personagem">
+          <img src="imagens/elwen.png" alt="Elfa Mística">
+          <p>Elfa Mística</p>
+        </div>
+        <div class="personagem">
+          <img src="imagens/lyra.png" alt="Maga Estelar">
+          <p>Maga Estelar</p>
+        </div>
+      </div>
+
+      <button id="iniciar" onclick="iniciarJogo()">Iniciar Jornada</button>
+    </div>
+
+    <div id="quiz" style="display: none;"></div>
+    <div id="resultado" style="display: none;"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+<footer id="avisoIA">
+    Imagens geradas por IA.
+  </footer>
+  
+</html>
