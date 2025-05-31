@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  },
+  "name": "extensaoweb",
+  "version": "1.0.0",
+  "description": "Repositório com os exercícios, atividades e projetos da disciplina **Programação para Web**, no curso de Ciência da Computação.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laraewellen/extensaoweb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Laraewellen/extensaoweb/issues"
+  },
+  "homepage": "https://github.com/Laraewellen/extensaoweb#readme"
+}
