@@ -9,12 +9,12 @@ const db = require('./db');
 app.get('/', (req, res) => {
     res.send('Servidor funcionando');
 })
-app.use(express.json)
-const apiRoutes = require('./routes/api');
-app.use('/api/users', apiRoutes);
 
+const apiRoutes = require('./routes/api');
 app.use(express.json());
 app.use('/api/users', apiRoutes);
+
+
 
 app.listen(port, () => {
     console.log("Servidor rodando na porta 3000");
